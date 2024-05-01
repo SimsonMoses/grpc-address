@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option java_package = "com.learn.grpc.user";
+
+option java_multiple_files = true;
+
+message User{
+  string userFirstName = 1;
+  string userLastName = 2;
+  string userEmail = 3;
+  string userGender = 4;
+  int32 userPhoneNumber = 5;
+  string userDepartment = 6;
+  string userJoiningDate = 7;
+}
+message UserRequest{
+  string email = 1;
+}
+message UserPresent{
+  bool isUserPresent = 1;
+}
+service UserService{
+  rpc getUser(UserRequest) returns (User){};
+  rpc userExist(UserRequest) returns (UserPresent){};
+}
